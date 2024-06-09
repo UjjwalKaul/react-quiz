@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import QUESTIONS from '../questions';
 import quizCompleteImg from '../assets/quiz-complete.png';
 import QuestionTimer from './QuestionTimer';
@@ -8,11 +8,17 @@ export default function Quiz() {
   const activeQuestionIndex = userAnswer.length;
   const quizComplete = activeQuestionIndex === QUESTIONS.length;
 
-  function handleSelectAnswer(selectedAnswer) {
+  const handleSelectAnswer = useCallback(function handleSelectAnswer(
+    selectedAnswer
+  ) {
     setUserAnswer((prevUserAnswers) => {
       return [...prevUserAnswers, selectedAnswer];
     });
-  }
+  },
+  []);
+  const handleSkipAnswer = useCallback(() => {
+    handleSelectAnswer(null);
+  }, [handleSelectAnswer]);
 
   if (quizComplete) {
     return (
@@ -40,12 +46,7 @@ export default function Quiz() {
           {shuffledAnswers.map((answer) => {
             return (
               <li className="answer" key={answer}>
-                <button
-                  onClick={() => {
-                    handleSelectAnswer(answer);
-                  }}>
-                  {answer}
-                </button>
+                <button onClick={handleSkipAnswer}>{answer}</button>
               </li>
             );
           })}
