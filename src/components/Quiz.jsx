@@ -1,8 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import QUESTIONS from '../questions';
 import quizCompleteImg from '../assets/quiz-complete.png';
-import QuestionTimer from './QuestionTimer';
-import Answers from './Answers';
 import Question from './Question';
 export default function Quiz() {
   const [answerState, setAnswerState] = useState('');
