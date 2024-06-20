@@ -2,35 +2,15 @@ import React, { useState, useCallback } from 'react';
 import QUESTIONS from '../questions';
 import quizCompleteImg from '../assets/quiz-complete.png';
 import Question from './Question';
+
 export default function Quiz() {
-  const [answerState, setAnswerState] = useState('');
-  const [userAnswer, setUserAnswer] = useState([]);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const activeQuestionIndex =
-    answerState === '' ? userAnswer.length : userAnswer.length - 1;
+  const [userAnswers, setUserAnswers] = useState([]);
+  const activeQuestionIndex = userAnswers.length;
   const quizComplete = activeQuestionIndex === QUESTIONS.length;
 
-  const handleSelectAnswer = useCallback(
-    function handleSelectAnswer(selectedAnswer) {
-      setAnswerState('answered');
-      setSelectedAnswer(selectedAnswer);
-      setUserAnswer((prevUserAnswers) => {
-        return [...prevUserAnswers, selectedAnswer];
-      });
-      setTimeout(() => {
-        if (selectedAnswer === QUESTIONS[activeQuestionIndex].answers[0]) {
-          setAnswerState('correct');
-        } else {
-          setAnswerState('wrong');
-        }
-        setTimeout(() => {
-          setAnswerState('');
-          setSelectedAnswer(null); // Reset selected answer
-        }, 2000);
-      }, 1000);
-    },
-    [activeQuestionIndex]
-  );
+  const handleSelectAnswer = useCallback((selectedAnswer) => {
+    setUserAnswers((prevUserAnswers) => [...prevUserAnswers, selectedAnswer]);
+  }, []);
 
   const handleSkipAnswer = useCallback(() => {
     handleSelectAnswer(null);
@@ -49,11 +29,8 @@ export default function Quiz() {
     <div id="quiz">
       <Question
         key={activeQuestionIndex}
-        questionText={QUESTIONS[activeQuestionIndex].text}
-        answers={QUESTIONS[activeQuestionIndex].answers}
+        questionIndex={activeQuestionIndex}
         onSelectAnswer={handleSelectAnswer}
-        selectedAnswer={userAnswer[userAnswer.length - 1]}
-        answerState={answerState}
         onSkipAnswer={handleSkipAnswer}
       />
     </div>
