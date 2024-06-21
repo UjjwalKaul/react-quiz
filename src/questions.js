@@ -69,4 +69,85 @@ export default [
       'Using an if-else statement.',
     ],
   },
+  // New questions
+  {
+    id: 'q8',
+    text: 'What is the primary purpose of the useEffect hook in React?',
+    answers: [
+      'To perform side effects in function components.',
+      'To manage the state of function components.',
+      'To fetch data from an API.',
+      'To optimize performance in React applications.',
+    ],
+  },
+  {
+    id: 'q9',
+    text: 'Which of the following is true about React components?',
+    answers: [
+      'Components can be class-based or function-based.',
+      'Components must be class-based.',
+      'Components must be function-based.',
+      'Components cannot manage their own state.',
+    ],
+  },
+  {
+    id: 'q10',
+    text: 'What is the significance of keys in React lists?',
+    answers: [
+      'Keys help React identify which items have changed, are added, or are removed.',
+      'Keys are required to iterate over lists in React.',
+      'Keys are used to style list items in React.',
+      'Keys help in optimizing the performance of React applications by caching list items.',
+    ],
+  },
+  {
+    id: 'q11',
+    text: 'How do you pass data to a child component in React?',
+    answers: [
+      'By using props.',
+      'By using state.',
+      'By using context.',
+      'By using refs.',
+    ],
+  },
+  {
+    id: 'q12',
+    text: 'What is the use of the useState hook in React?',
+    answers: [
+      'To add state to functional components.',
+      'To handle side effects in functional components.',
+      'To fetch data in functional components.',
+      'To optimize rendering in functional components.',
+    ],
+  },
+  {
+    id: 'q13',
+    text: 'Which method in a class component is used to handle side effects?',
+    answers: [
+      'componentDidMount.',
+      'render.',
+      'constructor.',
+      'shouldComponentUpdate.',
+    ],
+  },
+  {
+    id: 'q14',
+    text: 'What is the purpose of the React.Fragment component?',
+    answers: [
+      'To group a list of children without adding extra nodes to the DOM.',
+      'To provide a fallback UI for error boundaries.',
+      'To memoize the rendered output of a component.',
+      'To manage the lifecycle methods of a component.',
+    ],
+  },
+  {
+    id: 'q15',
+    text: 'How can you optimize the performance of a React application?',
+    answers: [
+      'By using React.memo to memoize components.',
+      'By using inline styles for all components.',
+      'By avoiding the use of hooks.',
+      'By minimizing the number of components in the application.',
+    ],
+  },
 ];
